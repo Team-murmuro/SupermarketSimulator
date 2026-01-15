@@ -1,16 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public List<Dictionary<string, object>> data;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        data = CSVReader.Read("CSV/MapData");
+        Debug.Log(data[0]["1"]);
     }
 }
