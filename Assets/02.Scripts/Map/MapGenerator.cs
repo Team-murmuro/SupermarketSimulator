@@ -1,13 +1,30 @@
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
+using System.Collections.Generic;
 
 public class MapGenerator : MonoBehaviour
 {
-    public List<Dictionary<string, object>> data;
+    private List<Dictionary<string, object>> mapData;
 
-    private void Start()
+    private Tilemap tilemap;
+    public TileBase[] tileBases;
+
+    private void Awake()
     {
-        data = CSVReader.Read("CSV/MapData");
-        Debug.Log(data[0]["1"]);
+        mapData = CSVReader.Read("CSV/MapData");
+        tilemap = transform.GetChild(0).GetComponent<Tilemap>();
+    }
+
+    public void Generate()
+    {
+        tilemap.ClearAllTiles();
+
+        for(int i = 0; i < mapData.Count; i++)
+        {
+            for(int j = 0; j <  mapData[i].Count; j++)
+            {
+
+            }
+        }
     }
 }
