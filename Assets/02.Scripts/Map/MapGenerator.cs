@@ -15,15 +15,24 @@ public class MapGenerator : MonoBehaviour
         tilemap = transform.GetChild(0).GetComponent<Tilemap>();
     }
 
-    public void Generate()
+    private void Start()
+    {
+        GenerateMap();
+    }
+
+    public void GenerateMap()
     {
         tilemap.ClearAllTiles();
 
-        for(int i = 0; i < mapData.Count; i++)
+        for(int y = 0; y < mapData.Count; y++)
         {
-            for(int j = 0; j <  mapData[i].Count; j++)
+            for(int x = 0; x <  mapData[y].Count; x++)
             {
+                Vector3Int pos = new Vector3Int(x, -y, 0);
+                string value = mapData[y][x.ToString()].ToString().Trim();
 
+                if (int.TryParse(value, out int tileIndex))
+                    tilemap.SetTile(pos, tileBases[tileIndex]);
             }
         }
     }
