@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 using System.Collections.Generic;
 
 namespace Utils.ClassUtility
@@ -18,5 +19,12 @@ namespace Utils.ClassUtility
         public string name; 
         public string gender;
         public int moveSpeed;
+    }
+
+    // 커스터마이징 부위별 Sprite 저장 배열
+    [Serializable]
+    public class CustomizingSprites
+    {
+        public Sprite[] sprites;
     }
 }

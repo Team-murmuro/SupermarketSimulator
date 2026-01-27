@@ -11,8 +11,8 @@ public class MapGenerator : MonoBehaviour
     private Tilemap groundTilemap;
     public TileBase[] tileBases;
 
-    private int[] wallIndex = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
-    private int[] groundIndex = new int[] { 13 };
+    private int[] wallIndex = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+    private int[] groundIndex = new int[] { 12, 13 };
 
     private void Awake()
     {

@@ -13,6 +13,13 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        Init();
         instance = this;
+    }
+
+    private void Init()
+    {
+        Application.targetFrameRate = 65;
+        Screen.SetResolution(1920, 1080, true);
     }
 }
