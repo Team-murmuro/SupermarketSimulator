@@ -58,4 +58,10 @@ public class PlayerController : MonoBehaviour
         currentDir = _dir;
         CustomizingManager.Instance.ChangeDirection(playerSR, customizingSpriteIndex, currentDir);
     }
+
+    // 랜덤한 디자인의 캐릭터 생성 예시
+    public void OnCustomizing()
+    {
+        CustomizingManager.Instance.RandomCustomizing(playerSR, customizingSpriteIndex);
+    }
 }

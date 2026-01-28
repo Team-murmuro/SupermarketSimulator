@@ -31,6 +31,8 @@ public class CustomizingManager : MonoBehaviour
         {
             for (int i = 0; i < _spriteRenderer.Length; i++)
                 _spriteRenderer[i].sprite = front[i].sprites[_customizingSpriteIndex[i]];
+
+            _spriteRenderer[2].sortingOrder = 2;
         }
         else if(_dir == Direction.Back)
         {
@@ -40,19 +42,26 @@ public class CustomizingManager : MonoBehaviour
                     continue;
                 _spriteRenderer[i].sprite = back[i].sprites[_customizingSpriteIndex[i]];
             }
+
+            _spriteRenderer[2].sortingOrder = 4;
         }
         else
         {
             for (int i = 0; i < _spriteRenderer.Length; i++)
                 _spriteRenderer[i].sprite = left[i].sprites[_customizingSpriteIndex[i]];
 
+            _spriteRenderer[2].sortingOrder = 2;
             _spriteRenderer[0].transform.localScale = (_dir == Direction.Left) ? new Vector3(1.0f, 1.0f, 1.0f) : new Vector3(-1.0f, 1.0f, 1.0f);
         }
     }
 
     // 랜덤한 디자인의 캐릭터 생성
-    public void RandomCustomizing()
+    public void RandomCustomizing(SpriteRenderer[] _spriteRenderer, int[] _customizingSpriteIndex)
     {
-
+        for(int i = 0; i < _customizingSpriteIndex.Length; i++)
+        {
+            _customizingSpriteIndex[i] = Random.Range(0, front[i].sprites.Length);
+            _spriteRenderer[i].sprite = front[i].sprites[_customizingSpriteIndex[i]];
+        }
     }
 }
