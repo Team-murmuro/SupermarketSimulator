@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 {
     private PlayerData playerData;
     private Rigidbody2D playerRb;
+    private Animator playerAnimator;
+    private AnimatorOverrideController playerAOC;
     private SpriteRenderer[] playerSR;
     private PlayerState playerState = PlayerState.Idle;
 
@@ -21,12 +23,15 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         playerRb = GetComponent<Rigidbody2D>();
+        playerAnimator = GetComponent<Animator>();
+        playerAOC = GetComponent<AnimatorOverrideController>();
         playerSR = GetComponentsInChildren<SpriteRenderer>();
     }
 
     private void Start()
     {
         playerData = DataManager.Instance.LoadJson<PlayerList>(DataManager.Instance.playerDataFileName).Players[0];
+        playerAnimator.runtimeAnimatorController = playerAOC;
     }
 
     private void Update()
@@ -40,6 +45,10 @@ public class PlayerController : MonoBehaviour
         moveDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         playerRb.linearVelocity = moveDir * playerData.moveSpeed;
         isMove = moveDir.sqrMagnitude > moveThreshold;
+
+        playerAnimator.SetBool("isMove", isMove);
+        playerAnimator.SetFloat("moveX", moveDir.x);
+        playerAnimator.SetFloat("moveY", moveDir.y);
 
         if (moveDir.y > 0)
             SetDirection(Direction.Back);
@@ -56,7 +65,8 @@ public class PlayerController : MonoBehaviour
             return;
 
         currentDir = _dir;
-        CustomizingManager.Instance.ChangeDirection(playerSR, customizingSpriteIndex, currentDir);
+        playerSR[0].transform.localScale = (_dir == Direction.Left) ? new Vector3(1.0f, 1.0f, 1.0f) : new Vector3(-1.0f, 1.0f, 1.0f);
+        //CustomizingManager.Instance.ChangeDirection(playerSR, customizingSpriteIndex, currentDir);
     }
 
     // 랜덤한 디자인의 캐릭터 생성 예시
