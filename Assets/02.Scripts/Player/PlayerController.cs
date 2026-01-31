@@ -5,14 +5,16 @@ using Utils.EnumType;
 
 public class PlayerController : MonoBehaviour
 {
+    private PlayerState playerState = PlayerState.Idle;
     private PlayerData playerData;
+
     private Rigidbody2D playerRb;
+    private SpriteRenderer[] playerSR;
     private Animator playerAnimator;
     private AnimatorOverrideController playerAOC;
-    private SpriteRenderer[] playerSR;
-    private PlayerState playerState = PlayerState.Idle;
 
     private Vector2 moveDir;
+    private Vector2 lookDir = Vector2.down;
     private Direction currentDir;
     private const float moveThreshold = 0.01f;
 
@@ -31,7 +33,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         playerData = DataManager.Instance.LoadJson<PlayerList>(DataManager.Instance.playerDataFileName).Players[0];
-        playerAnimator.runtimeAnimatorController = playerAOC;
+        //playerAnimator.runtimeAnimatorController = playerAOC;
     }
 
     private void Update()
@@ -46,9 +48,12 @@ public class PlayerController : MonoBehaviour
         playerRb.linearVelocity = moveDir * playerData.moveSpeed;
         isMove = moveDir.sqrMagnitude > moveThreshold;
 
+        if (moveDir.sqrMagnitude > moveThreshold)
+            lookDir = Quantize4Dir(moveDir);
+
         playerAnimator.SetBool("isMove", isMove);
-        playerAnimator.SetFloat("moveX", moveDir.x);
-        playerAnimator.SetFloat("moveY", moveDir.y);
+        playerAnimator.SetFloat("xDir", lookDir.x);
+        playerAnimator.SetFloat("yDir", lookDir.y);
 
         if (moveDir.y > 0)
             SetDirection(Direction.Back);
@@ -65,8 +70,16 @@ public class PlayerController : MonoBehaviour
             return;
 
         currentDir = _dir;
-        playerSR[0].transform.localScale = (_dir == Direction.Left) ? new Vector3(1.0f, 1.0f, 1.0f) : new Vector3(-1.0f, 1.0f, 1.0f);
-        //CustomizingManager.Instance.ChangeDirection(playerSR, customizingSpriteIndex, currentDir);
+        CustomizingManager.Instance.ChangeDirection(playerSR, customizingSpriteIndex, currentDir);
+    }
+
+    // 사선 입력 시 상/하 우선 처리
+    public Vector2 Quantize4Dir(Vector2 input)
+    {
+        if (Mathf.Abs(input.y) >= Mathf.Abs(input.x))
+            return new Vector2(0, Mathf.Sign(input.y));
+        else
+            return new Vector2(Mathf.Sign(input.x), 0);
     }
 
     // 랜덤한 디자인의 캐릭터 생성 예시

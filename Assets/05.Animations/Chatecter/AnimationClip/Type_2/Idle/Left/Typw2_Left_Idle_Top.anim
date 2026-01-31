@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Typw2_Left_Walk_Top
+  m_Name: Typw2_Left_Idle_Top
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0

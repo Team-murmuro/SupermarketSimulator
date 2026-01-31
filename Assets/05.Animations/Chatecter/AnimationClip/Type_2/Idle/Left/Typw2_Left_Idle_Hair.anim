@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Typw2_Left_Walk_Shoes
+  m_Name: Typw2_Left_Idle_Hair
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,9 +21,9 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 21300000, guid: f5d4356743ff2024c9a7239690796373, type: 3}
+      value: {fileID: 21300000, guid: cee962383ab84ac47b800637c71e4216, type: 3}
     attribute: m_Sprite
-    path: Shoes
+    path: Hair
     classID: 212
     script: {fileID: 0}
     flags: 2
@@ -35,7 +35,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 3574509203
+      path: 1019596327
       attribute: 0
       script: {fileID: 0}
       typeID: 212
@@ -44,7 +44,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: f5d4356743ff2024c9a7239690796373, type: 3}
+    - {fileID: 21300000, guid: cee962383ab84ac47b800637c71e4216, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

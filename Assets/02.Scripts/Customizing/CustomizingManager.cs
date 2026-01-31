@@ -51,7 +51,7 @@ public class CustomizingManager : MonoBehaviour
                 _spriteRenderer[i].sprite = left[i].sprites[_customizingSpriteIndex[i]];
 
             _spriteRenderer[2].sortingOrder = 2;
-            _spriteRenderer[0].transform.localScale = (_dir == Direction.Left) ? new Vector3(1.0f, 1.0f, 1.0f) : new Vector3(-1.0f, 1.0f, 1.0f);
+            _spriteRenderer[0].transform.localScale = (_dir == Direction.Left) ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
         }
     }
 
