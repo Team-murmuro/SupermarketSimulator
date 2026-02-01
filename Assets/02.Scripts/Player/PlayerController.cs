@@ -1,7 +1,6 @@
 using UnityEngine;
-using UnityEngine.UIElements;
-using Utils.ClassUtility;
 using Utils.EnumType;
+using Utils.ClassUtility;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,7 +10,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D playerRb;
     private SpriteRenderer[] playerSR;
     private Animator playerAnimator;
-    private AnimatorOverrideController playerAOC;
 
     private Vector2 moveDir;
     private Vector2 lookDir = Vector2.down;
@@ -26,14 +24,12 @@ public class PlayerController : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
-        playerAOC = GetComponent<AnimatorOverrideController>();
         playerSR = GetComponentsInChildren<SpriteRenderer>();
     }
 
     private void Start()
     {
         playerData = DataManager.Instance.LoadJson<PlayerList>(DataManager.Instance.playerDataFileName).Players[0];
-        //playerAnimator.runtimeAnimatorController = playerAOC;
     }
 
     private void Update()
@@ -70,7 +66,12 @@ public class PlayerController : MonoBehaviour
             return;
 
         currentDir = _dir;
-        CustomizingManager.Instance.ChangeDirection(playerSR, customizingSpriteIndex, currentDir);
+        playerSR[0].transform.localScale = (_dir == Direction.Left) ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
+
+        if (_dir == Direction.Back)
+            playerSR[2].sortingOrder = 4;
+        else
+            playerSR[2].sortingOrder = 2;
     }
 
     // 사선 입력 시 상/하 우선 처리
