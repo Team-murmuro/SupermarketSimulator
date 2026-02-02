@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa9a9b82679cde4b9c0b74bcc427b4c, type: 3}
   m_Name: Face
   m_EditorClassIdentifier: 
-  idleBack: {fileID: 0}
-  idleFront: {fileID: 7400000, guid: e3a4293577380d84c8cb2fd4617bf529, type: 2}
-  idleLeft: {fileID: 7400000, guid: d3498f69e5632e04da17813a2d38ad3f, type: 2}
-  walkBack: {fileID: 0}
-  walkFront: {fileID: 7400000, guid: d66db87e3d3140a4eb135f7dabb9574f, type: 2}
-  walkLeft: {fileID: 7400000, guid: feab03caad3177e4f88db367f94e601c, type: 2}
+  sets:
+  - motionSets:
+    - {fileID: 0}
+    - {fileID: 0}
+  - motionSets:
+    - {fileID: 7400000, guid: e3a4293577380d84c8cb2fd4617bf529, type: 2}
+    - {fileID: 7400000, guid: d66db87e3d3140a4eb135f7dabb9574f, type: 2}
+  - motionSets:
+    - {fileID: 7400000, guid: d3498f69e5632e04da17813a2d38ad3f, type: 2}
+    - {fileID: 7400000, guid: feab03caad3177e4f88db367f94e601c, type: 2}

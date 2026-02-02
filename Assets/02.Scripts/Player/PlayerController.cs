@@ -7,9 +7,10 @@ public class PlayerController : MonoBehaviour
     private PlayerState playerState = PlayerState.Idle;
     private PlayerData playerData;
 
-    private Rigidbody2D playerRb;
-    private SpriteRenderer[] playerSR;
+    private AnimatorOverrideController playerAOC;
     private Animator playerAnimator;
+    private SpriteRenderer[] playerSR;
+    private Rigidbody2D playerRb;
 
     private Vector2 moveDir;
     private Vector2 lookDir = Vector2.down;
@@ -22,9 +23,12 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        playerRb = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
+        playerAOC = new AnimatorOverrideController(playerAnimator.runtimeAnimatorController);
+        playerAnimator.runtimeAnimatorController = playerAOC;
+
         playerSR = GetComponentsInChildren<SpriteRenderer>();
+        playerRb = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
@@ -69,7 +73,7 @@ public class PlayerController : MonoBehaviour
         playerSR[0].transform.localScale = (_dir == Direction.Left) ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
 
         if (_dir == Direction.Back)
-            playerSR[2].sortingOrder = 4;
+            playerSR[2].sortingOrder = 6;
         else
             playerSR[2].sortingOrder = 2;
     }
@@ -86,6 +90,12 @@ public class PlayerController : MonoBehaviour
     // 랜덤한 디자인의 캐릭터 생성 예시
     public void OnCustomizing()
     {
-        CustomizingManager.Instance.RandomCustomizing(playerSR, customizingSpriteIndex);
+        //CustomizingManager.Instance.RandomCustomizing(playerSR, customizingSpriteIndex);
+        for(int i = 0; i < customizingSpriteIndex.Length; i++)
+        {
+            customizingSpriteIndex[i] = Random.Range(0, 2);
+        }
+
+        CustomizingManager.Instance.ChangeAnimationClip(playerAOC, customizingSpriteIndex);
     }
 }

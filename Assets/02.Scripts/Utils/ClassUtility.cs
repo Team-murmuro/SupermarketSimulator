@@ -21,10 +21,24 @@ namespace Utils.ClassUtility
         public int moveSpeed;
     }
 
-    // 커스터마이징 부위별 Sprite 저장 배열
+    // 커스터마이징 파츠별 Sprite 저장 배열
     [Serializable]
     public class CustomizingSprites
     {
         public Sprite[] sprites;
+    }
+
+    [Serializable]
+    public class PartsSets
+    {
+        // Body, Face, Hair, Top, Bottoms, Shoes 저장 배열
+        public AnimationSet[] partsSets;
+    }
+
+    [Serializable]
+    public class MotionSets
+    {
+        // Idel, Walk 저장 배열
+        public AnimationClip[] motionSets;
     }
 }

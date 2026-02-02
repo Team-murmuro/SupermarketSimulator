@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aa9a9b82679cde4b9c0b74bcc427b4c, type: 3}
+  m_Name: Top
+  m_EditorClassIdentifier: 
+  sets:
+  - motionSets:
+    - {fileID: 7400000, guid: f7660132cff0b0543b63f5856679a093, type: 2}
+    - {fileID: 7400000, guid: 5c0b6a7ef8fc6f140ade9151e7ab781e, type: 2}
+  - motionSets:
+    - {fileID: 7400000, guid: aa3acd0afc3af0f4cac5eb4d1fa47fe5, type: 2}
+    - {fileID: 7400000, guid: 007c9669f3eca2a46bc6b50461268696, type: 2}
+  - motionSets:
+    - {fileID: 7400000, guid: 8c7d903af918be449ad026168eb83e39, type: 2}
+    - {fileID: 7400000, guid: 356ff5d3d2807484b95b9fe883cb9391, type: 2}

@@ -203,7 +203,21 @@ MonoBehaviour:
   - sprites:
     - {fileID: 21300000, guid: 07275af3c7e6b5b4b8811fb73da8fd73, type: 3}
     - {fileID: 21300000, guid: f5d4356743ff2024c9a7239690796373, type: 3}
-  set: []
+  animationSet:
+  - partsSets:
+    - {fileID: 11400000, guid: 8886b9b73eb4ed648a00dabd776d4fed, type: 2}
+    - {fileID: 11400000, guid: 01fbf362b3a195847af14df8dd531086, type: 2}
+    - {fileID: 11400000, guid: 145ee21ed83046046ae2ddd76d9c98e9, type: 2}
+    - {fileID: 11400000, guid: 12557e43ca481c14f8c155a4f2ba8f4d, type: 2}
+    - {fileID: 11400000, guid: 950fce7fc021fe14fa3903c3785ba6ff, type: 2}
+    - {fileID: 11400000, guid: 77d5962bd0aa4d147b5f7ff34e9d22d8, type: 2}
+  - partsSets:
+    - {fileID: 11400000, guid: 4371ba6ae70bb1448ae4aa42c4b6f20b, type: 2}
+    - {fileID: 11400000, guid: 3d2463c39abc0e14b8559dcf879c6317, type: 2}
+    - {fileID: 11400000, guid: 34134c093758c6f46ad664deef9f1a7c, type: 2}
+    - {fileID: 11400000, guid: 6eb8d4ad09052304fb5b2ca14c152ff2, type: 2}
+    - {fileID: 11400000, guid: bcb99202d0a0399458c1ea224e2a64a5, type: 2}
+    - {fileID: 11400000, guid: 3a84f5716e08bf6448b3ff6fb6c430b3, type: 2}
 --- !u!4 &16579903
 Transform:
   m_ObjectHideFlags: 0
@@ -1717,10 +1731,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 441103224752032653, guid: 41c78be6ae0eb9a4785779948253ffa2, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 22100000, guid: 9a17bf16ebfd3f845b9f3b5dc58f0b26, type: 2}
     - target: {fileID: 1986493900747923098, guid: 41c78be6ae0eb9a4785779948253ffa2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1
