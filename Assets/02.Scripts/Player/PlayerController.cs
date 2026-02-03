@@ -90,7 +90,6 @@ public class PlayerController : MonoBehaviour
     // 랜덤한 디자인의 캐릭터 생성 예시
     public void OnCustomizing()
     {
-        //CustomizingManager.Instance.RandomCustomizing(playerSR, customizingSpriteIndex);
         for(int i = 0; i < customizingSpriteIndex.Length; i++)
         {
             customizingSpriteIndex[i] = Random.Range(0, 2);

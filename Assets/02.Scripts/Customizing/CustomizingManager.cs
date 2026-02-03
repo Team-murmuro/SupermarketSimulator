@@ -56,16 +56,6 @@ public class CustomizingManager : MonoBehaviour
     //}
     #endregion
 
-    // 랜덤한 디자인의 캐릭터 생성
-    public void RandomCustomizing(SpriteRenderer[] _spriteRenderer, int[] _customizingSpriteIndex)
-    {
-        for(int i = 0; i < _customizingSpriteIndex.Length; i++)
-        {
-            _customizingSpriteIndex[i] = Random.Range(0, front[i].sprites.Length);
-            _spriteRenderer[i].sprite = front[i].sprites[_customizingSpriteIndex[i]];
-        }
-    }
-
     public void ChangeAnimationClip(AnimatorOverrideController _aoc, int[] _customizingSpriteIndex)
     {
         // 모션
