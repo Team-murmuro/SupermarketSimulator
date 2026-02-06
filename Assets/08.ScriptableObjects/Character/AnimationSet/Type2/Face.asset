@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa9a9b82679cde4b9c0b74bcc427b4c, type: 3}
   m_Name: Face
   m_EditorClassIdentifier: 
+  parts: 1
   sets:
   - motionSets:
     - {fileID: 0}

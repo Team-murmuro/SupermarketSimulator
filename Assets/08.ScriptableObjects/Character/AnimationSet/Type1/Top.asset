@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa9a9b82679cde4b9c0b74bcc427b4c, type: 3}
   m_Name: Top
   m_EditorClassIdentifier: 
+  parts: 3
   sets:
   - motionSets:
     - {fileID: 7400000, guid: 354a3178e0839524396882d9a5c7c3f4, type: 2}

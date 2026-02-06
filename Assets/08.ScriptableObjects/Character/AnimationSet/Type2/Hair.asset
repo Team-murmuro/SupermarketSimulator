@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa9a9b82679cde4b9c0b74bcc427b4c, type: 3}
   m_Name: Hair
   m_EditorClassIdentifier: 
+  parts: 2
   sets:
   - motionSets:
     - {fileID: 7400000, guid: 681a60ff31ecb4844a3ffbd4b081e545, type: 2}

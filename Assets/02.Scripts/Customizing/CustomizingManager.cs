@@ -1,5 +1,4 @@
 using UnityEngine;
-using Utils.EnumType;
 using Utils.ClassUtility;
 using System.Collections.Generic;
 
@@ -13,7 +12,7 @@ public class CustomizingManager : MonoBehaviour
     public List<CustomizingSprites> back;
     public List<CustomizingSprites> left;
 
-    [Header("AnimationSet")] // 타입별로 저장 리스트
+    [Header("AnimationSet")] // 파츠별 저장 리스트
     public List<PartsSets> animationSet;
 
     private string[] motionName = new string[] { "Idle_", "Walk_" };
@@ -56,10 +55,20 @@ public class CustomizingManager : MonoBehaviour
     //}
     #endregion
 
-    public void ChangeAnimationClip(AnimatorOverrideController _aoc, int[] _customizingSpriteIndex)
+    public void OnCustomizing(AnimatorOverrideController _aoc, int[] _customizingSpriteIndex)
     {
+
+    }
+
+    public void OnRandomCustomizing(AnimatorOverrideController _aoc, int[] _customizingSpriteIndex)
+    {
+        for (int i = 0; i < _customizingSpriteIndex.Length; i++)
+        {
+            _customizingSpriteIndex[i] = Random.Range(0, 2);
+        }
+
         // 모션
-        for(int i = 0; i < 2; i++)
+        for (int i = 0; i < 2; i++)
         {
             // 방향
             for(int j = 0; j < dirName.Length; j++)

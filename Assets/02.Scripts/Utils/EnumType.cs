@@ -9,6 +9,17 @@ namespace Utils.EnumType
         Left
     }
 
+    // Customizing 파츠 종류
+    public enum CustomizingParts
+    {
+        Body,
+        Face,
+        Hair,
+        Top,
+        Bottoms,
+        Shoes
+    }
+
     // 플레이어 상태
     public enum PlayerState
     {

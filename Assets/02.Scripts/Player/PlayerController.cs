@@ -87,14 +87,9 @@ public class PlayerController : MonoBehaviour
             return new Vector2(Mathf.Sign(input.x), 0);
     }
 
-    // 랜덤한 디자인의 캐릭터 생성 예시
+    // 랜덤한 디자인의 캐릭터 생성
     public void OnCustomizing()
     {
-        for(int i = 0; i < customizingSpriteIndex.Length; i++)
-        {
-            customizingSpriteIndex[i] = Random.Range(0, 2);
-        }
-
-        CustomizingManager.Instance.ChangeAnimationClip(playerAOC, customizingSpriteIndex);
+        CustomizingManager.Instance.OnRandomCustomizing(playerAOC, customizingSpriteIndex);
     }
 }
