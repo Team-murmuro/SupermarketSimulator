@@ -17,9 +17,12 @@ MonoBehaviour:
   - motionSets:
     - {fileID: 7400000, guid: 681a60ff31ecb4844a3ffbd4b081e545, type: 2}
     - {fileID: 7400000, guid: 099517d5ec233544a973cc764d0220c8, type: 2}
+    - {fileID: 7400000, guid: 4735f7156e3f41444bb81f45f0e718ce, type: 2}
   - motionSets:
     - {fileID: 7400000, guid: e8a2c7a4799431649afd6288e9360b41, type: 2}
     - {fileID: 7400000, guid: 6a9338d4b781dd84d8b2e60ef0aabf0a, type: 2}
+    - {fileID: 7400000, guid: 960f79cdcd0e993408a8abdc1a3c8854, type: 2}
   - motionSets:
     - {fileID: 7400000, guid: 85b92168588e8024d8fd5b7cdfce9d89, type: 2}
     - {fileID: 7400000, guid: ee03047d20c01e343a388604db4a61d7, type: 2}
+    - {fileID: 7400000, guid: 09d028c20d7f7594fbe710d54878852e, type: 2}

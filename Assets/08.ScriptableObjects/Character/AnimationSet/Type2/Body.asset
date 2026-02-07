@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa9a9b82679cde4b9c0b74bcc427b4c, type: 3}
   m_Name: Body
   m_EditorClassIdentifier: 
+  parts: 0
   sets:
   - motionSets:
     - {fileID: 7400000, guid: 7e48ad9e73d30a74199b97df0c850efa, type: 2}
     - {fileID: 7400000, guid: eef270af9b571ef48b594f5c40273107, type: 2}
+    - {fileID: 7400000, guid: 90f5aefad66f59e4dbb2bb8aab0dae55, type: 2}
   - motionSets:
     - {fileID: 7400000, guid: 2f1588ba66c4a93449c0cc8cbdf18417, type: 2}
     - {fileID: 7400000, guid: 81eaa45e20ddf8f48ae5ca740cc06dd1, type: 2}
+    - {fileID: 7400000, guid: d2c9f0cfb4c4fa94fb41f856ba304e1a, type: 2}
   - motionSets:
     - {fileID: 7400000, guid: da48775ffa5b6a749b29823c004a833b, type: 2}
     - {fileID: 7400000, guid: a1e226963aa46944786dd490ec9fe343, type: 2}
+    - {fileID: 7400000, guid: 899fb9a53ef0ebc44b99703fed6b8291, type: 2}

@@ -71,7 +71,7 @@ public class CustomizingManager : MonoBehaviour
         }
 
         // 모션
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < motionName.Length; i++)
         {
             // 방향
             for(int j = 0; j < dirName.Length; j++)

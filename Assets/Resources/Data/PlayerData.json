@@ -5,8 +5,8 @@
       "level": 1,
       "name": "Player",
       "gender": "M",
-      "moveSpeed": 2,
-      "runSpeed": 4
+      "moveSpeed": 1.5,
+      "runSpeed": 2.5
     }
   ]
 }

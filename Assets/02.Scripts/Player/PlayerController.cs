@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
             return;
 
         moveDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        playerRb.linearVelocity = moveDir * playerData.moveSpeed;
+        playerRb.linearVelocity = moveDir.normalized * playerData.moveSpeed;
         isMove = moveDir.sqrMagnitude > moveThreshold;
 
         if (moveDir.sqrMagnitude > moveThreshold)
@@ -74,8 +74,9 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKey(KeyCode.LeftShift))
         {
             moveDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            playerRb.linearVelocity = moveDir * playerData.runSpeed;
-            isRun = moveDir.sqrMagnitude > moveThreshold;
+            playerRb.linearVelocity = moveDir.normalized * playerData.runSpeed;
+            isMove = false;
+            isRun = true;
 
             if (moveDir.sqrMagnitude > moveThreshold)
                 lookDir = Quantize4Dir(moveDir);
@@ -91,9 +92,10 @@ public class PlayerController : MonoBehaviour
             else if (moveDir.x != 0)
                 SetDirection(moveDir.x > 0 ? Direction.Right : Direction.Left);
         }
-        else
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             isRun = false;
+            playerAnimator.SetBool("isRun", isRun);
         }
     }
 
