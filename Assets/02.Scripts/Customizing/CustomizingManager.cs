@@ -8,14 +8,14 @@ public class CustomizingManager : MonoBehaviour
     public static CustomizingManager Instance {  get { return instance; } }
 
     [Header("Sprites")]
-    public List<CustomizingSprites> front;
     public List<CustomizingSprites> back;
+    public List<CustomizingSprites> front;
     public List<CustomizingSprites> left;
 
     [Header("AnimationSet")] // 파츠별 저장 리스트
     public List<PartsSets> animationSet;
 
-    private string[] motionName = new string[] { "Idle_", "Walk_" };
+    private string[] motionName = new string[] { "Idle_", "Walk_", "Run_" };
     private string[] dirName = new string[] { "Back_", "Front_", "Left_" };
     private string[] aocName = new string[] { "Body", "Face", "Hair", "Top", "Bottoms", "Shoes" };
 
@@ -55,9 +55,12 @@ public class CustomizingManager : MonoBehaviour
     //}
     #endregion
 
-    public void OnCustomizing(AnimatorOverrideController _aoc, int[] _customizingSpriteIndex)
+    public void OnCustomizing(AnimatorOverrideController _aoc, int[] _customizingSpriteIndex, int _motion, int _dir, int _parts, int _type)
     {
+        _customizingSpriteIndex[_parts] = _type;
 
+        _aoc[motionName[_motion] + dirName[_dir] + aocName[_parts]] = 
+            animationSet[_customizingSpriteIndex[_parts]].partsSets[_parts].sets[_dir].motionSets[_motion];
     }
 
     public void OnRandomCustomizing(AnimatorOverrideController _aoc, int[] _customizingSpriteIndex)

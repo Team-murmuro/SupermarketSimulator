@@ -19,6 +19,7 @@ namespace Utils.ClassUtility
         public string name; 
         public string gender;
         public int moveSpeed;
+        public int runSpeed;
     }
 
     // 커스터마이징 파츠별 Sprite 저장 배열
