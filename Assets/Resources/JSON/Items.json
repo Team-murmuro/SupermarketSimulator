@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "itmeImage": 0,
+      "itemName": "과자",
+      "price": 2500,
+      "packageQuantity": 3,
+      "categoryType": 0,
+      "category": 1
+    },
+    {
+      "id": 2,
+      "itmeImage": 1,
+      "itemName": "우유",
+      "price": 5000,
+      "packageQuantity": 5,
+      "categoryType": 1,
+      "category": 0
+    }
+  ]
+}

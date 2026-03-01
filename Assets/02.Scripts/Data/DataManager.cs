@@ -6,7 +6,8 @@ public class DataManager : MonoBehaviour
     private static DataManager instance;
     public static DataManager Instance { get { return instance; } }
 
-    public string playerDataFileName = "PlayerData.json";
+    public string playerDataFileName = "Players.json";
+    public string itemDataFileName = "Items.json";
 
     private void Awake()
     {
@@ -39,7 +40,7 @@ public class DataManager : MonoBehaviour
         else
         {
             // 저장된 파일이 없다면 Resources 폴더에서 기본 데이터 불러오기
-            TextAsset baseJson = Resources.Load<TextAsset>("Data/" + _fileName.Replace(".json", ""));
+            TextAsset baseJson = Resources.Load<TextAsset>("JSON/" + _fileName.Replace(".json", ""));
             if (baseJson != null)
                 return JsonUtility.FromJson<T>(baseJson.text);
         }

@@ -16,10 +16,26 @@ namespace Utils.ClassUtility
     {
         public int id;
         public int level;
-        public string name; 
+        public string name;
         public string gender;
         public float moveSpeed;
         public float runSpeed;
+    }
+
+    // 아이템 데이터 구조
+    [Serializable]
+    public class ItemList
+    {
+        public List<ItemData> Items;
+    }
+
+    [Serializable]
+    public class ItemData
+    {
+        public int id;
+        public string itemName;
+        public string description;
+        public Sprite itemSprite;
     }
 
     // 커스터마이징 파츠별 Sprite 저장 배열
@@ -33,7 +49,7 @@ namespace Utils.ClassUtility
     public class PartsSets
     {
         // Body, Face, Hair, Top, Bottoms, Shoes 저장 배열
-        public AnimationSet[] partsSets;
+        public AnimationSetSO[] partsSets;
     }
 
     [Serializable]

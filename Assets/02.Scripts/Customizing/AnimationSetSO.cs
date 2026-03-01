@@ -3,8 +3,8 @@ using Utils.EnumType;
 using Utils.ClassUtility;
 using System.Collections.Generic;
 
-[CreateAssetMenu(fileName = "AnimationSet", menuName = "Character/AnimationSet")]
-public class AnimationSet : ScriptableObject
+[CreateAssetMenu(fileName = "AnimationSetSO", menuName = "Character/AnimationSetSO")]
+public class AnimationSetSO : ScriptableObject
 {
     public CustomizingParts parts;
     // Back, Front, Left 저장 배열

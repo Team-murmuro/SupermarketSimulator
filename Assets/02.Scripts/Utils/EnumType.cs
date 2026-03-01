@@ -32,4 +32,22 @@ namespace Utils.EnumType
     {
         Idle
     }
+
+    // 아이템 카테고리 타입
+    public enum ItemCategoryType
+    {
+        General,   // 일반식품
+        Fresh      // 신선식품
+    }
+
+    // 아이템 카테고리
+    public enum ItemCategory
+    {
+        Drink,              // 음료
+        ProcessedFood,      // 가공식품
+        HouseholdProducts,  // 생활용품
+        SeaFood,            // 수산물
+        LivestockProducts,  // 축산물
+        Produce             // 농산물
+    }
 }
