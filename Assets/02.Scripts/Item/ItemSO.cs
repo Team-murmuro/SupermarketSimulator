@@ -5,8 +5,9 @@ using Utils.EnumType;
 public class ItemSO : ScriptableObject
 {
     public int id;
-    public int itmeImage;
-    public string itemName;
+    public Sprite itmeImage;
+    public string itemEName;
+    public string itemKName;
     public float price;
     public int packageQuantity;
     public ItemCategoryType categoryType;

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Utils.EnumType;
 using System.Collections.Generic;
 
 namespace Utils.ClassUtility
@@ -33,9 +34,13 @@ namespace Utils.ClassUtility
     public class ItemData
     {
         public int id;
-        public string itemName;
-        public string description;
-        public Sprite itemSprite;
+        public string iconKey;
+        public string itemEName;
+        public string itemKName;
+        public float price;
+        public int packageQuantity;
+        public ItemCategoryType categoryType;
+        public ItemCategory category;
     }
 
     // 커스터마이징 파츠별 Sprite 저장 배열
