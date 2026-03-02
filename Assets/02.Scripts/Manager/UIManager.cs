@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
-using Utils.EnumType;
 
 public class UIManager : MonoBehaviour
 {
@@ -31,7 +30,7 @@ public class UIManager : MonoBehaviour
         playerController = GameObject.Find("Character").GetComponent<PlayerController>();
 
         mainCanvas = GameObject.Find("MainCanvas").GetComponent<Canvas>();
-        partsImages = mainCanvas.transform.GetChild(1).GetChild(0).GetComponentsInChildren<Image>().Skip(1).ToArray();
-        partsObjects = mainCanvas.transform.GetChild(1).GetChild(1).Cast<Transform>().Select(t => t.gameObject).ToArray();
+        partsImages = mainCanvas.transform.GetChild(3).GetChild(0).GetComponentsInChildren<Image>().Skip(1).ToArray();
+        partsObjects = mainCanvas.transform.GetChild(3).GetChild(1).Cast<Transform>().Select(t => t.gameObject).ToArray();
     }
 }
