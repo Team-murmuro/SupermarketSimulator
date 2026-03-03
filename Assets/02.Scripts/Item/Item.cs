@@ -2,15 +2,19 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public ItemSO item;
+    private Inventory inventory;
+
+    private void Start()
     {
-        
+        inventory = GameObject.Find("MainCanvas").transform.GetChild(0).GetChild(0).GetComponent<Inventory>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            inventory.GetItem(item, 1);
+        }
     }
 }
