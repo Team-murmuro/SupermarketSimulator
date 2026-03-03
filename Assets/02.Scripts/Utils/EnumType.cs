@@ -37,7 +37,8 @@ namespace Utils.EnumType
     public enum ItemCategoryType
     {
         General,   // 일반식품
-        Fresh      // 신선식품
+        Fresh,     // 신선식품
+        Equipment  // 착용장비
     }
 
     // 아이템 카테고리

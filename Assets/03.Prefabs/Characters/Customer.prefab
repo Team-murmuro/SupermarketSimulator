@@ -274,9 +274,9 @@ GameObject:
   - component: {fileID: 1989538110762628153}
   - component: {fileID: 8522238608108170762}
   - component: {fileID: 441103224752032653}
-  - component: {fileID: 7103017946472290070}
+  - component: {fileID: 7311681652659874462}
   m_Layer: 0
-  m_Name: Character
+  m_Name: Customer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -443,7 +443,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7103017946472290070
+--- !u!114 &7311681652659874462
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -452,7 +452,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7277281125472204975}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b95b7a989c2ff4542b5ddf1f284fae53, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e3bcab2ea3dec7409fe06d624d1ce22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8895817262371798766
