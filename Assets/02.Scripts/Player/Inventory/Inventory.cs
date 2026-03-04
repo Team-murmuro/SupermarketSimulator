@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using Utils.EnumType;
 
@@ -11,7 +12,9 @@ public class Inventory : MonoBehaviour
     {
         inventoryBase = transform.GetChild(0).gameObject;
         slotParent = inventoryBase.transform.GetChild(0).gameObject;
+
         slots = slotParent.GetComponentsInChildren<Slot>();
+        System.Array.ForEach(slots, slot => slot.Init());
     }
 
     // 아이템 획득 
@@ -44,6 +47,13 @@ public class Inventory : MonoBehaviour
     // 아이템 사용
     public void UesItem(ItemSO _item, int _count)
     {
-
+        for(int i = 0; i < slots.Length; i++)
+        {
+            if (slots[i].item != null && slots[i].item.categoryType == _item.categoryType)
+            {
+                slots[i].SetSlot(_count);
+                return;
+            }
+        }
     }
 }

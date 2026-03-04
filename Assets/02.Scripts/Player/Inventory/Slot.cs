@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Utils.EnumType;
+using UnityEngine.EventSystems;
 
-public class Slot : MonoBehaviour
+public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
     public ItemSO item;       // 획득한 아이템
     public int itemCount;   // 획득한 아이템 개수
@@ -67,5 +68,52 @@ public class Slot : MonoBehaviour
         countObject.SetActive(false);
 
         SetColor(0);
+    }
+
+    // 해당 슬롯 자리 변경
+    public void ChangeSlot()
+    {
+        ItemSO tempItem = item;
+        int tempItemCount = itemCount;
+
+        AddItem(DragSlot.instance.dragSlot.item, DragSlot.instance.dragSlot.itemCount);
+
+        if (tempItem != null)
+            DragSlot.instance.dragSlot.AddItem(tempItem, tempItemCount);
+        else
+            DragSlot.instance.dragSlot.ClearSlot();
+    }
+
+    // 마우스 드래그가 시작했을 때 호출
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        if (item != null)
+        {
+            DragSlot.instance.dragSlot = this;
+            DragSlot.instance.SetDragImage(itemImage);
+            DragSlot.instance.transform.position = eventData.position;
+        }
+    }
+
+    // 마우스 드래그 하는 동안 계속 호출 
+    public void OnDrag(PointerEventData eventData)
+    {
+        if (item != null)
+            DragSlot.instance.transform.position = eventData.position;
+    }
+
+    // 마우스 드래그 하는 것이 끝냈을 때 호출
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        DragSlot.instance.SetColor(0);
+        DragSlot.instance.dragSlot = null;
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        if (DragSlot.instance.dragSlot != null)
+        {
+            ChangeSlot();
+        }
     }
 }
