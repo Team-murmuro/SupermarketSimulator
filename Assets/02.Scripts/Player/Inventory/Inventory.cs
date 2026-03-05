@@ -1,4 +1,3 @@
-using System.Linq;
 using UnityEngine;
 using Utils.EnumType;
 
@@ -8,13 +7,40 @@ public class Inventory : MonoBehaviour
     private GameObject slotParent;
     private Slot[] slots;
 
+    private int selectSlot = 0;
+
     private void Start()
     {
         inventoryBase = transform.GetChild(0).gameObject;
-        slotParent = inventoryBase.transform.GetChild(0).gameObject;
+        slotParent = inventoryBase.transform.GetChild(1).gameObject;
 
         slots = slotParent.GetComponentsInChildren<Slot>();
         System.Array.ForEach(slots, slot => slot.Init());
+    }
+
+    private void Update()
+    {
+        InputNumber();
+    }
+
+    private void InputNumber()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            SelectSlot(0);
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+            SelectSlot(1);
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+            SelectSlot(2);
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+            SelectSlot(3);
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+            SelectSlot(4);
+    }
+
+    // 인벤토리 선택
+    public void SelectSlot(int _index)
+    {
+        selectSlot = _index;
     }
 
     // 아이템 획득 
