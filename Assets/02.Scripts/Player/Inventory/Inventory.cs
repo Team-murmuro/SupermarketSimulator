@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using Utils.EnumType;
 
 public class Inventory : MonoBehaviour
@@ -7,7 +8,11 @@ public class Inventory : MonoBehaviour
     private GameObject slotParent;
     private Slot[] slots;
 
-    private int selectSlot = 0;
+    private int selectSlot = 0;      // 퀵슬롯 선택 번호
+    private GameObject selectImage;  // 선택한 슬롯 이미지
+
+    public GameObject itemPrefab;
+    private PlayerController player;
 
     private void Start()
     {
@@ -16,6 +21,9 @@ public class Inventory : MonoBehaviour
 
         slots = slotParent.GetComponentsInChildren<Slot>();
         System.Array.ForEach(slots, slot => slot.Init());
+
+        selectImage = inventoryBase.transform.GetChild(0).gameObject;
+        player = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     private void Update()
@@ -41,6 +49,7 @@ public class Inventory : MonoBehaviour
     public void SelectSlot(int _index)
     {
         selectSlot = _index;
+        selectImage.transform.position = slots[selectSlot].transform.position;
     }
 
     // 아이템 획득 
@@ -81,5 +90,13 @@ public class Inventory : MonoBehaviour
                 return;
             }
         }
+    }
+
+    // 아이템 버림
+    public void DropItem(ItemSO _item)
+    {
+        GameObject _itemPrefab = Instantiate(itemPrefab, player.transform.position, Quaternion.identity);
+        _itemPrefab.GetComponent<Item>().item = _item;
+        _itemPrefab.GetComponent<SpriteRenderer>().sprite = _item.itmeImage;
     }
 }

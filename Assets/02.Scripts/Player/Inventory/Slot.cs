@@ -5,18 +5,24 @@ using UnityEngine.EventSystems;
 
 public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
-    public ItemSO item;       // 획득한 아이템
-    public int itemCount;   // 획득한 아이템 개수
+    public ItemSO item;             // 획득한 아이템
+    public int itemCount;           // 획득한 아이템 개수
 
-    private Image itemImage; // 아이템 이미지
-    private Text countText;  // 아이템 개수 텍스트
+    private Image itemImage;        // 아이템 이미지
+    private Text countText;         // 아이템 개수 텍스트
     private GameObject countObject;
+
+    private Inventory inventory;
+    private RectTransform baseRect;  // Invemtory_Base 영역
     
     public void Init()
     {
         itemImage = transform.GetChild(0).GetComponent<Image>();
         countObject = itemImage.transform.GetChild(0).gameObject;
         countText = countObject.GetComponentInChildren<Text>();
+
+        inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
+        baseRect = inventory.transform.GetChild(0).GetComponent<RectTransform>();
     }
 
     // 아이템 이미지 투명도 조절
@@ -105,6 +111,19 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     // 마우스 드래그 하는 것이 끝냈을 때 호출
     public void OnEndDrag(PointerEventData eventData)
     {
+        // 인벤토리 영역을 벗어난 곳에서 드래그를 끝냈다면
+        if (!(DragSlot.instance.transform.localPosition.x > baseRect.rect.xMin
+            && DragSlot.instance.transform.localPosition.x < baseRect.rect.xMax
+            && DragSlot.instance.transform.localPosition.y > baseRect.rect.yMin
+            && DragSlot.instance.transform.localPosition.y < baseRect.rect.yMax))
+        {
+            if (DragSlot.instance.dragSlot != null)
+            {
+                SetSlot(-1);
+                inventory.DropItem(item);
+            }
+        }
+
         DragSlot.instance.SetColor(0);
         DragSlot.instance.dragSlot = null;
     }
