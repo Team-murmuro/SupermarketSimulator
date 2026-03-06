@@ -1,6 +1,7 @@
 using UnityEngine;
-using Utils.EnumType;
 using Utils.ClassUtility;
+using Utils.EnumType;
+using static UnityEditor.Progress;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private Animator playerAnimator;
     private SpriteRenderer[] playerSR;
     private Rigidbody2D playerRb;
+    private Inventory inventory;
 
     private Vector2 moveDir;
     private Vector2 lookDir = Vector2.down;
@@ -35,6 +37,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         playerData = DataManager.Instance.LoadJson<PlayerList>(DataManager.Instance.playerDataFileName).Players[0];
+        inventory = GameObject.Find("MainCanvas").transform.GetChild(0).GetChild(0).GetComponent<Inventory>();
     }
 
     private void Update()
@@ -133,5 +136,14 @@ public class PlayerController : MonoBehaviour
     public void OnCustomizing()
     {
         CustomizingManager.Instance.OnRandomCustomizing(playerAOC, customizingSpriteIndex);
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            inventory.GetItem(collision.GetComponent<Item>()?.item, 1);
+            Destroy(collision.gameObject);
+        }
     }
 }
