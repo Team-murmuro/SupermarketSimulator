@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using Utils.EnumType;
 using System.Collections.Generic;
+using UnityEngine.Tilemaps;
 
 namespace Utils.ClassUtility
 {
@@ -62,5 +63,14 @@ namespace Utils.ClassUtility
     {
         // Idel, Walk 저장 배열
         public AnimationClip[] motionSets;
+    }
+
+    // TileData 구조
+    [Serializable]
+    public class TileDatabase
+    {
+        public int tileID;
+        public TileBase tile;
+        public TileMapLayer layer;    // 바닥, 벽 등 타일맵 레이어 구분
     }
 }
