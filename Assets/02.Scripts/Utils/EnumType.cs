@@ -51,4 +51,11 @@ namespace Utils.EnumType
         LivestockProducts,  // Ãà»ê¹°
         Produce             // ³ó»ê¹°
     }
+
+    // TileMap Layer
+    public enum TileMapLayer
+    {
+        Ground, // ¹Ù´Ú
+        Wall    // º®
+    }
 }

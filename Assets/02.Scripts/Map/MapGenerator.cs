@@ -1,29 +1,36 @@
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
+using Utils.EnumType;
+using Utils.ClassUtility;
 using UnityEngine.Tilemaps;
 using System.Collections.Generic;
 
 public class MapGenerator : MonoBehaviour
 {
+    public TileDatabase[] tileDatas;
+    private Dictionary<int, TileDatabase> tileDict;
     private List<Dictionary<string, object>> mapData;
 
     private Tilemap wallTilemap;
     private Tilemap groundTilemap;
-    public TileBase[] tileBases;
-
-    private int[] wallIndex = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
-    private int[] groundIndex = new int[] { 12, 13 };
 
     private void Awake()
     {
         mapData = CSVReader.Read("CSV/MapData");
         wallTilemap = transform.GetChild(0).GetComponent<Tilemap>();
         groundTilemap = transform.GetChild(1).GetComponent<Tilemap>();
+
+        tileDict = new Dictionary<int, TileDatabase>();
+
+        foreach (var data in tileDatas)
+        {
+            tileDict[data.tileID] = data;
+        }
     }
 
     private void Start()
     {
-        //GenerateMap();
+        GenerateMap();
     }
 
     public void GenerateMap()
@@ -38,12 +45,15 @@ public class MapGenerator : MonoBehaviour
                 Vector3Int pos = new Vector3Int(x, -y, 0);
                 string value = mapData[y][x.ToString()].ToString().Trim();
 
-                if (int.TryParse(value, out int tileIndex))
+                if (int.TryParse(value, out int tileID))
                 {
-                    if (wallIndex.Contains(tileIndex))
-                        wallTilemap.SetTile(pos, tileBases[tileIndex]);
-                    else if (groundIndex.Contains(tileIndex))
-                        groundTilemap.SetTile(pos, tileBases[tileIndex]);
+                    if (tileDict.TryGetValue(tileID, out TileDatabase tileData))
+                    {
+                        if (tileData.layer == TileMapLayer.Ground)
+                            groundTilemap.SetTile(pos, tileData.tile);
+                        else if (tileData.layer == TileMapLayer.Wall)
+                            wallTilemap.SetTile(pos, tileData.tile);
+                    }
                 }
             }
         }
