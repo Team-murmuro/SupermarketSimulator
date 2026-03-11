@@ -3,6 +3,25 @@ using UnityEngine.Tilemaps;
 
 public class CameraController : MonoBehaviour
 {
+    private Transform target;
+    private float smoothTime = 0.15f;
+
+    private Vector3 velocity = Vector2.zero;
+
+    private void Start()
+    {
+        target = FindAnyObjectByType<PlayerController>().transform;
+    }
+
+    private void LateUpdate()
+    {
+        if (target == null)
+            return;
+
+        Vector3 targetPosition = new Vector3(target.position.x, target.position.y, -10);
+        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+    }
+
     public void CameraCenterAndFit(Tilemap _tilemap)
     {
         Bounds bounds = _tilemap.localBounds;
