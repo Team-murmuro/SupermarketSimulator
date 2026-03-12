@@ -93,9 +93,9 @@ public class Inventory : MonoBehaviour
     }
 
     // 아이템 버림
-    public void DropItem(ItemSO _item)
+    public void DropItem(ItemSO _item, Vector3 _pos)
     {
-        GameObject _itemPrefab = Instantiate(itemPrefab, player.transform.position, Quaternion.identity);
+        GameObject _itemPrefab = Instantiate(itemPrefab, _pos, Quaternion.identity);
         _itemPrefab.GetComponent<Item>().item = _item;
         _itemPrefab.GetComponent<SpriteRenderer>().sprite = _item.itmeImage;
     }
