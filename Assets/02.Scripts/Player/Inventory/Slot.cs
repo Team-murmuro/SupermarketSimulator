@@ -119,11 +119,22 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         {
             if (DragSlot.instance.dragSlot != null)
             {
+                Vector3 worldPos;
+
+                RectTransformUtility.ScreenPointToWorldPointInRectangle(
+                    baseRect,
+                    eventData.position,
+                    eventData.pressEventCamera,
+                    out worldPos
+                );
+
+                Vector3 spawnPos = Camera.main.ScreenToWorldPoint(eventData.position);
+                spawnPos.z = 0;
+
+                inventory.DropItem(item, spawnPos);
                 SetSlot(-1);
-                inventory.DropItem(item);
             }
         }
-
         DragSlot.instance.SetColor(0);
         DragSlot.instance.dragSlot = null;
     }
